@@ -26,31 +26,40 @@ they have similar meaning and if it is hard to get data on one then it is hard t
 
 certain people didn't feel comfortable disclosing certain information and these people are likely to be more withdrawn in answering among various features.
 
+![Missing Values in Features]()
+
 
 ### 1.2 Assess Missing Data in Each Row
 I looked at 6 features where the data had no missing values, and quite interestingly some of these features had even distributions of values between the two datasets, and some were quite uneven.
 
 The highest difference in distributions was seen in the columns:
 
-`FINANZ_ANLEGER`
-`FINANZ_SPARER`
-`FINANZ_VORSORGER`
+- `FINANZ_ANLEGER`
+- `FINANZ_SPARER`
+- `FINANZ_VORSORGER`
 This means that 3 out of the 6 features I looked at have a very different distribution of values between the two splits of data- NaN heavy data and NaN light data. This means that it might not be the best idea to drop a lot of the NaN datum, as it could disort the data. We should revist the high NaN rows later as some seem to be qualitatively different.
 
+![Missing Values in Rows]()
+
+![Distribution of Values Between High NaN and Low NaN Rows]()
+
+![Distribution of Values Between Features]()
+
 ### 1.3 Re-Encode Categorical Features
-The non-numerical binary variable is: `OST_WEST_KZ`
-`CAMEO_DEU_2015` and `CAMEO_DEUG_2015` is a multi-level categorical: alphanumeric
-`SOHO_KZ` and `GREEN_AVANTGARDE` is a regular binary variable
-`ANREDE_KZ` is binary, but takes values `[1,2]`
+- The non-numerical binary variable is: `OST_WEST_KZ`
+- `CAMEO_DEU_2015` and `CAMEO_DEUG_2015` are a multi-level categorical: alphanumeric
+- `SOHO_KZ` and `GREEN_AVANTGARDE` is a regular binary variable
+- `ANREDE_KZ` is binary, but takes values `[1,2]`
+
+
 The variables that need to be re-encoded are:
-
-non-numerical binary var: `OST_WEST_KZ` will be converted to regular binary
-all multi-level categoricals will be one hot encoded
-The variables I dropped are:
-
-- `KK_KUNDENTYP`
-- `TITEL_KZ`
-- `AGER_TYP`
+- non-numerical binary var: `OST_WEST_KZ` will be converted to regular binary
+- all multi-level categoricals will be one hot encoded
+- The variables I dropped are:
+      > 1. `KK_KUNDENTYP`
+      > 2. `TITEL_KZ`
+      > 3. `AGER_TYP`
+      
 I dropped them because they had very few (relative to length of dataset) non-missing values. Which wouldn't be useful for analysis anyway.
 
 **Engineering Steps**
@@ -72,11 +81,11 @@ created mapping from the current variable to a categorical `YOUTH_DECADE` variab
 **Engineering  CAMEO_INTL_2015**
 first defined two mapping functions: decode_wealth and decode_life
 
-`decode_wealth()` returns the first digit of the orginial variable which shows wealth status
-`decode_life()` returns the second digit of the original variable showing life stage
+- `decode_wealth()` returns the first digit of the orginial variable which shows wealth status
+- `decode_life()` returns the second digit of the original variable showing life stage
 I applied this function to the data set and created a new ordinal variable for each wealth and life stage
-`CAMEO_INTL_2015_WEALTH`
-`CAMEO_INTL_2015_LIFE`
+-- `CAMEO_INTL_2015_WEALTH`
+-- `CAMEO_INTL_2015_LIFE`
 
 ***Other mixed variables***
 the remaining mixed variables that were still in data set after engineering step were: `['LP_LEBENSPHASE_FEIN', 'LP_LEBENSPHASE_GROB', 'WOHNLAGE','PLZ8_BAUMAX']`
@@ -100,6 +109,7 @@ The Principal Component Analysis with all of the Principal Components showed tha
 
 It is interesting to note that the last 50 components (#125-175) explain very little of the variance.
 
+![PCA Variance Explanation]()
 
 ### 2.3: Interpret Principal Components
 Each principal component is a unit vector that points in the direction of highest variance (after accounting for the variance captured by earlier principal components). The further a weight is from zero, the more the principal component is in the direction of the corresponding feature. If two features have large weights of the same sign (both positive or both negative), then increases in one tend expect to be associated with increases in the other. To contrast, features with different signs can be expected to show a negative correlation: increases in one variable should result in a decrease in the other.
@@ -128,26 +138,25 @@ The must under-represented compared to full population data were clusters: 4, 5,
 Based on the cluster centers, the highest value principal components are `PC8`, `PC7`, and `PC5` whereas the lowest value principal component are `PC2`, `PC1`, and `PC6`
 
 *Most Value*
-
-`PC8` is correlated the most with families with children, especially teenagers, as well as aspiring average to low-income earners.
-`PC7` is correlated most with independent workers and title-holder households, as well as residing in a mixed use building
-`PC5`: correlated with number of adults in household, family living in two-generational household, as well as an inverse correlation with region purchasing power (more expensive regions)
+- `PC8` is correlated the most with families with children, especially teenagers, as well as aspiring average to low-income earners.
+- `PC7` is correlated most with independent workers and title-holder households, as well as residing in a mixed use building
+- `PC5`: correlated with number of adults in household, family living in two-generational household, as well as an inverse correlation with region purchasing power (more expensive regions)
 
 *Least Value*
-`PC2`: is correlated with age, low financial preparedness.
-`PC1`: correlated with low income, and a region with higher share of 6-10 family homes
-`PC6`: average earning villagers who live in multi generational households, and is correlated with lack of home-ownership.
+- `PC2`: is correlated with age, low financial preparedness.
+- `PC1`: correlated with low income, and a region with higher share of 6-10 family homes
+- `PC6`: average earning villagers who live in multi generational households, and is correlated with lack of home-ownership.
 This means that generally speaking aspiring independent families with children, who live in mixed-use mulit-generational housing and in areas where purchasing power is low are over represented in the customer cluster data compared to the general population. These are the people that are most important to the business of the company
 
 ***Under-Represented Cluster: #10***
 Based on the cluster centers, the highest value principal components are: `PC7`, `PC6` , `PC13`, and the lowest value principal components are: `PC1`, `PC11`, and `PC19`
 
 *Most Value*
-`PC6` is correlated with average earning villagers who live in multi generational households, and is correlated with lack of home-ownership.
-`PC13` is correlated with working-class, multi-cultural youth.
+- `PC6` is correlated with average earning villagers who live in multi generational households, and is correlated with lack of home-ownership.
+- `PC13` is correlated with working-class, multi-cultural youth.
 
 *Least Value*
-`PC11` is most correlated with single-parents, high share of 10+ family houses, and an established middle class
-`PC19` is most correlated with older upper class people.
+- `PC11` is most correlated with single-parents, high share of 10+ family houses, and an established middle class
+- `PC19` is most correlated with older upper class people.
 This means that the most under represented cluster in our analysis contains people who are younger and don't own homes, as well as being more working class and multi-cultured.
 
