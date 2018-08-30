@@ -11775,10 +11775,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Project:-Identify-Customer-Segments">Project: Identify Customer Segments<a class="anchor-link" href="#Project:-Identify-Customer-Segments">&#182;</a></h1><p>In this project, you will apply unsupervised learning techniques to identify segments of the population that form the core customer base for a mail-order sales company in Germany. These segments can then be used to direct marketing campaigns towards audiences that will have the highest expected rate of returns. The data that you will use has been provided by our partners at Bertelsmann Arvato Analytics, and represents a real-life data science task.</p>
-<p>This notebook will help you complete this task by providing a framework within which you will perform your analysis steps. In each step of the project, you will see some text describing the subtask that you will perform, followed by one or more code cells for you to complete your work. <strong>Feel free to add additional code and markdown cells as you go along so that you can explore everything in precise chunks.</strong> The code cells provided in the base template will outline only the major tasks, and will usually not be enough to cover all of the minor tasks that comprise it.</p>
-<p>It should be noted that while there will be precise guidelines on how you should handle certain tasks in the project, there will also be places where an exact specification is not provided. <strong>There will be times in the project where you will need to make and justify your own decisions on how to treat the data.</strong> These are places where there may not be only one way to handle the data. In real-life tasks, there may be many valid ways to approach an analysis task. One of the most important things you can do is clearly document your approach so that other scientists can understand the decisions you've made.</p>
-<p>At the end of most sections, there will be a Markdown cell labeled <strong>Discussion</strong>. In these cells, you will report your findings for the completed section, as well as document the decisions that you made in your approach to each subtask. <strong>Your project will be evaluated not just on the code used to complete the tasks outlined, but also your communication about your observations and conclusions at each stage.</strong></p>
+<h1 id="Project:-Identify-Customer-Segments">Project: Identify Customer Segments<a class="anchor-link" href="#Project:-Identify-Customer-Segments">&#182;</a></h1><p>In this project, I apply unsupervised learning techniques to identify segments of the population that form the core customer base for a mail-order sales company in Germany. These segments can then be used to direct marketing campaigns towards audiences that will have the highest expected rate of returns. The data that I use has been provided by Bertelsmann Arvato Analytics.</p>
 
 </div>
 </div>
@@ -11821,8 +11818,7 @@ div#notebook {
 <li><code>AZDIAS_Feature_Summary.csv</code>: Summary of feature attributes for demographics data; 85 features (rows) x 4 columns</li>
 </ul>
 <p>Each row of the demographics files represents a single person, but also includes information outside of individuals, including information about their household, building, and neighborhood. You will use this information to cluster the general population into groups with similar demographic properties. Then, you will see how the people in the customers dataset fit into those created clusters. The hope here is that certain clusters are over-represented in the customers data, as compared to the general population; those over-represented clusters will be assumed to be part of the core userbase. This information can then be used for further applications, such as targeting for a marketing campaign.</p>
-<p>To start off with, load in the demographics data for the general population into a pandas DataFrame, and do the same for the feature attributes summary. Note for all of the <code>.csv</code> data files in this project: they're semicolon (<code>;</code>) delimited, so you'll need an additional argument in your <a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html"><code>read_csv()</code></a> call to read in the data properly. Also, considering the size of the main dataset, it may take some time for it to load completely.</p>
-<p>Once the dataset is loaded, it's recommended that you take a little bit of time just browsing the general structure of the dataset and feature summary file. You'll be getting deep into the innards of the cleaning in the first major step of the project, so gaining some general familiarity can help you get your bearings.</p>
+<p>Note for all of the <code>.csv</code> data files in this project: they're semicolon (<code>;</code>) delimited, so you'll need an additional argument in your <a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html"><code>read_csv()</code></a> call to read in the data properly. Also, considering the size of the main dataset, it may take some time for it to load completely.</p>
 
 </div>
 </div>
@@ -12349,11 +12345,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p><strong>Tip</strong>: Add additional cells to keep everything in reasonably-sized chunks! Keyboard shortcut <code>esc --&gt; a</code> (press escape to enter command mode, then press the 'A' key) adds a new cell before the active cell, and <code>esc --&gt; b</code> adds a new cell after the active cell. If you need to convert an active cell to a markdown cell, use <code>esc --&gt; m</code> and to convert to a code cell, use <code>esc --&gt; y</code>.</p>
-</blockquote>
-<h2 id="Step-1:-Preprocessing">Step 1: Preprocessing<a class="anchor-link" href="#Step-1:-Preprocessing">&#182;</a></h2><h3 id="Step-1.1:-Assess-Missing-Data">Step 1.1: Assess Missing Data<a class="anchor-link" href="#Step-1.1:-Assess-Missing-Data">&#182;</a></h3><p>The feature summary file contains a summary of properties for each demographics data column. You will use this file to help you make cleaning decisions during this stage of the project. First of all, you should assess the demographics data in terms of missing data. Pay attention to the following points as you perform your analysis, and take notes on what you observe. Make sure that you fill in the <strong>Discussion</strong> cell with your findings and decisions at the end of each step that has one!</p>
-<h4 id="Step-1.1.1:-Convert-Missing-Value-Codes-to-NaNs">Step 1.1.1: Convert Missing Value Codes to NaNs<a class="anchor-link" href="#Step-1.1.1:-Convert-Missing-Value-Codes-to-NaNs">&#182;</a></h4><p>The fourth column of the feature attributes summary (loaded in above as <code>feat_info</code>) documents the codes from the data dictionary that indicate missing or unknown data. While the file encodes this as a list (e.g. <code>[-1,0]</code>), this will get read in as a string object. You'll need to do a little bit of parsing to make use of it to identify and clean the data. Convert data that matches a 'missing' or 'unknown' value code into a numpy NaN value. You might want to see how much data takes on a 'missing' or 'unknown' code, and how much data is naturally missing, as a point of interest.</p>
-<p><strong>As one more reminder, you are encouraged to add additional cells to break up your analysis into manageable chunks.</strong></p>
+<h2 id="Step-1:-Preprocessing">Step 1: Preprocessing<a class="anchor-link" href="#Step-1:-Preprocessing">&#182;</a></h2><h3 id="Step-1.1:-Assess-Missing-Data">Step 1.1: Assess Missing Data<a class="anchor-link" href="#Step-1.1:-Assess-Missing-Data">&#182;</a></h3><h4 id="Step-1.1.1:-Convert-Missing-Value-Codes-to-NaNs">Step 1.1.1: Convert Missing Value Codes to NaNs<a class="anchor-link" href="#Step-1.1.1:-Convert-Missing-Value-Codes-to-NaNs">&#182;</a></h4><p>The fourth column of the feature attributes summary (loaded in above as <code>feat_info</code>) documents the codes from the data dictionary that indicate missing or unknown data. While the file encodes this as a list (e.g. <code>[-1,0]</code>), this will get read in as a string object. Convert data that matches a 'missing' or 'unknown' value code into a numpy NaN value. You might want to see how much data takes on a 'missing' or 'unknown' code, and how much data is naturally missing, as a point of interest.</p>
 
 </div>
 </div>
@@ -12921,14 +12913,7 @@ dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Step-1.1.3:-Assess-Missing-Data-in-Each-Row">Step 1.1.3: Assess Missing Data in Each Row<a class="anchor-link" href="#Step-1.1.3:-Assess-Missing-Data-in-Each-Row">&#182;</a></h4><p>Now, you'll perform a similar assessment for the rows of the dataset. How much data is missing in each row? As with the columns, you should see some groups of points that have a very different numbers of missing values. Divide the data into two subsets: one for data points that are above some threshold for missing values, and a second subset for points below that threshold.</p>
-<p>In order to know what to do with the outlier rows, we should see if the distribution of data values on columns that are not missing data (or are missing very little data) are similar or different between the two groups. Select at least five of these columns and compare the distribution of values.</p>
-<ul>
-<li>You can use seaborn's <a href="https://seaborn.pydata.org/generated/seaborn.countplot.html"><code>countplot()</code></a> function to create a bar chart of code frequencies and matplotlib's <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplot.html"><code>subplot()</code></a> function to put bar charts for the two subplots side by side.</li>
-<li>To reduce repeated code, you might want to write a function that can perform this comparison, taking as one of its arguments a column to be compared.</li>
-</ul>
-<p>Depending on what you observe in your comparison, this will have implications on how you approach your conclusions later in the analysis. If the distributions of non-missing features look similar between the data with many missing values and the data with few or no missing values, then we could argue that simply dropping those points from the analysis won't present a major issue. On the other hand, if the data with many missing values looks very different from the data with few or no missing values, then we should make a note on those data as special. We'll revisit these data later on. <strong>Either way, you should continue your analysis for now using just the subset of the data with few or no missing values.</strong></p>
-
+<h4 id="Step-1.1.3:-Assess-Missing-Data-in-Each-Row">Step 1.1.3: Assess Missing Data in Each Row<a class="anchor-link" href="#Step-1.1.3:-Assess-Missing-Data-in-Each-Row">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -13302,14 +13287,12 @@ This means that it might not be the best idea to drop a lot of the NaN datum, as
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Step-1.2:-Select-and-Re-Encode-Features">Step 1.2: Select and Re-Encode Features<a class="anchor-link" href="#Step-1.2:-Select-and-Re-Encode-Features">&#182;</a></h3><p>Checking for missing data isn't the only way in which you can prepare a dataset for analysis. Since the unsupervised learning techniques to be used will only work on data that is encoded numerically, you need to make a few encoding changes or additional assumptions to be able to make progress. In addition, while almost all of the values in the dataset are encoded using numbers, not all of them represent numeric values. Check the third column of the feature summary (<code>feat_info</code>) for a summary of types of measurement.</p>
+<h3 id="Step-1.2:-Select-and-Re-Encode-Features">Step 1.2: Select and Re-Encode Features<a class="anchor-link" href="#Step-1.2:-Select-and-Re-Encode-Features">&#182;</a></h3><p>While almost all of the values in the dataset are encoded using numbers, not all of them represent numeric values. Check the third column of the feature summary (<code>feat_info</code>) for a summary of types of measurement.</p>
 <ul>
 <li>For numeric and interval data, these features can be kept without changes.</li>
 <li>Most of the variables in the dataset are ordinal in nature. While ordinal values may technically be non-linear in spacing, make the simplifying assumption that the ordinal variables can be treated as being interval in nature (that is, kept without any changes).</li>
 <li>Special handling may be necessary for the remaining two variable types: categorical, and 'mixed'.</li>
 </ul>
-<p>In the first two parts of this sub-step, you will perform an investigation of the categorical and mixed-type features and make a decision on each of them, whether you will keep, drop, or re-encode each. Then, in the last part, you will create a new data frame with only the selected and engineered columns.</p>
-<p>Data wrangling is often the trickiest part of the data analysis process, and there's a lot of it to be done here. But stick with it: once you're done with this step, you'll be ready to get to the machine learning parts of the project!</p>
 
 </div>
 </div>
@@ -13360,9 +13343,9 @@ Name: type, dtype: int64</pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Step-1.2.1:-Re-Encode-Categorical-Features">Step 1.2.1: Re-Encode Categorical Features<a class="anchor-link" href="#Step-1.2.1:-Re-Encode-Categorical-Features">&#182;</a></h4><p>For categorical data, you would ordinarily need to encode the levels as dummy variables. Depending on the number of categories, perform one of the following:</p>
 <ul>
-<li>For binary (two-level) categoricals that take numeric values, you can keep them without needing to do anything.</li>
-<li>There is one binary variable that takes on non-numeric values. For this one, you need to re-encode the values as numbers or create a dummy variable.</li>
-<li>For multi-level categoricals (three or more values), you can choose to encode the values using multiple dummy variables (e.g. via <a href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html">OneHotEncoder</a>), or (to keep things straightforward) just drop them from the analysis. As always, document your choices in the Discussion section.</li>
+<li>For binary (two-level) categoricals that take numeric values, can keep them without needing to do anything.</li>
+<li>There is one binary variable that takes on non-numeric values. For this, need to re-encode the values as numbers or create a dummy variable.</li>
+<li>For multi-level categoricals (three or more values), can choose to encode the values using multiple dummy variables (e.g. via <a href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html">OneHotEncoder</a>), or (to keep things straightforward) just drop them from the analysis.</li>
 </ul>
 
 </div>
@@ -14533,10 +14516,10 @@ cleaning OST_WEST_KZ:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Step-2:-Feature-Transformation">Step 2: Feature Transformation<a class="anchor-link" href="#Step-2:-Feature-Transformation">&#182;</a></h2><h3 id="Step-2.1:-Apply-Feature-Scaling">Step 2.1: Apply Feature Scaling<a class="anchor-link" href="#Step-2.1:-Apply-Feature-Scaling">&#182;</a></h3><p>Before we apply dimensionality reduction techniques to the data, we need to perform feature scaling so that the principal component vectors are not influenced by the natural differences in scale for features. Starting from this part of the project, you'll want to keep an eye on the <a href="http://scikit-learn.org/stable/modules/classes.html">API reference page for sklearn</a> to help you navigate to all of the classes and functions that you'll need. In this substep, you'll need to check the following:</p>
+<h2 id="Step-2:-Feature-Transformation">Step 2: Feature Transformation<a class="anchor-link" href="#Step-2:-Feature-Transformation">&#182;</a></h2><h3 id="Step-2.1:-Apply-Feature-Scaling">Step 2.1: Apply Feature Scaling<a class="anchor-link" href="#Step-2.1:-Apply-Feature-Scaling">&#182;</a></h3><p>Before we apply dimensionality reduction techniques to the data, we need to perform feature scaling so that the principal component vectors are not influenced by the natural differences in scale for features.</p>
 <ul>
 <li>sklearn requires that data not have missing values in order for its estimators to work properly. So, before applying the scaler to your data, make sure that you've cleaned the DataFrame of the remaining missing values. This can be as simple as just removing all data points with missing data, or applying an <a href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Imputer.html">Imputer</a> to replace all missing values. You might also try a more complicated procedure where you temporarily remove missing values in order to compute the scaling parameters before re-introducing those missing values and applying imputation. Think about how much missing data you have and what possible effects each approach might have on your analysis, and justify your decision in the discussion section below.</li>
-<li>For the actual scaling function, a <a href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html">StandardScaler</a> instance is suggested, scaling each feature to mean 0 and standard deviation 1.</li>
+<li>For the actual scaling function, a <a href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html">StandardScaler</a> instance is suggested, scaling each feature to mean 0 and standard deviation 1. (RobustScaler also ok)</li>
 <li>For these classes, you can make use of the <code>.fit_transform()</code> method to both fit a procedure to the data as well as apply the transformation to the data at the same time. Don't forget to keep the fit sklearn objects handy, since you'll be applying them to the customer demographics data towards the end of the project.</li>
 </ul>
 
@@ -15155,11 +15138,9 @@ dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Step-2.3:-Interpret-Principal-Components">Step 2.3: Interpret Principal Components<a class="anchor-link" href="#Step-2.3:-Interpret-Principal-Components">&#182;</a></h3><p>Now that we have our transformed principal components, it's a nice idea to check out the weight of each variable on the first few components to see if they can be interpreted in some fashion.</p>
-<p>As a reminder, each principal component is a unit vector that points in the direction of highest variance (after accounting for the variance captured by earlier principal components). The further a weight is from zero, the more the principal component is in the direction of the corresponding feature. If two features have large weights of the same sign (both positive or both negative), then increases in one tend expect to be associated with increases in the other. To contrast, features with different signs can be expected to show a negative correlation: increases in one variable should result in a decrease in the other.</p>
-<ul>
-<li>To investigate the features, you should map each weight to their corresponding feature name, then sort the features according to weight. The most interesting features for each principal component, then, will be those at the beginning and end of the sorted list. Use the data dictionary document to help you understand these most prominent features, their relationships, and what a positive or negative value on the principal component might indicate.</li>
-<li>You should investigate and interpret feature associations from the first three principal components in this substep. To help facilitate this, you should write a function that you can call at any time to print the sorted list of feature weights, for the <em>i</em>-th principal component. This might come in handy in the next step of the project, when you interpret the tendencies of the discovered clusters.</li>
+<h3 id="Step-2.3:-Interpret-Principal-Components">Step 2.3: Interpret Principal Components<a class="anchor-link" href="#Step-2.3:-Interpret-Principal-Components">&#182;</a></h3><ul>
+<li>To investigate the features, map each weight to their corresponding feature name, then sort the features according to weight. The most interesting features for each principal component, then, will be those at the beginning and end of the sorted list. Use the data dictionary document to help you understand these most prominent features, their relationships, and what a positive or negative value on the principal component might indicate.</li>
+<li>Investigate and interpret feature associations from the first three principal components in this substep. To help facilitate this, you should write a function that you can call at any time to print the sorted list of feature weights, for the <em>i</em>-th principal component. This might come in handy in the next step of the project, when you interpret the tendencies of the discovered clusters.</li>
 </ul>
 
 </div>
@@ -15402,13 +15383,7 @@ The three most negatively correlated features are: <code>FINANZ_MINIMALIST</code
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Step-3:-Clustering">Step 3: Clustering<a class="anchor-link" href="#Step-3:-Clustering">&#182;</a></h2><h3 id="Step-3.1:-Apply-Clustering-to-General-Population">Step 3.1: Apply Clustering to General Population<a class="anchor-link" href="#Step-3.1:-Apply-Clustering-to-General-Population">&#182;</a></h3><p>You've assessed and cleaned the demographics data, then scaled and transformed them. Now, it's time to see how the data clusters in the principal components space. In this substep, you will apply k-means clustering to the dataset and use the average within-cluster distances from each point to their assigned cluster's centroid to decide on a number of clusters to keep.</p>
-<ul>
-<li>Use sklearn's <a href="http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans">KMeans</a> class to perform k-means clustering on the PCA-transformed data.</li>
-<li>Then, compute the average difference from each point to its assigned cluster's center. <strong>Hint</strong>: The KMeans object's <code>.score()</code> method might be useful here, but note that in sklearn, scores tend to be defined so that larger is better. Try applying it to a small, toy dataset, or use an internet search to help your understanding.</li>
-<li>Perform the above two steps for a number of different cluster counts. You can then see how the average distance decreases with an increasing number of clusters. However, each additional cluster provides a smaller net benefit. Use this fact to select a final number of clusters in which to group the data. <strong>Warning</strong>: because of the large size of the dataset, it can take a long time for the algorithm to resolve. The more clusters to fit, the longer the algorithm will take. You should test for cluster counts through at least 10 clusters to get the full picture, but you shouldn't need to test for a number of clusters above about 30.</li>
-<li>Once you've selected a final number of clusters to use, re-fit a KMeans instance to perform the clustering operation. Make sure that you also obtain the cluster assignments for the general demographics data, since you'll be using them in the final Step 3.3.</li>
-</ul>
+<h2 id="Step-3:-Clustering">Step 3: Clustering<a class="anchor-link" href="#Step-3:-Clustering">&#182;</a></h2><h3 id="Step-3.1:-Apply-Clustering-to-General-Population">Step 3.1: Apply Clustering to General Population<a class="anchor-link" href="#Step-3.1:-Apply-Clustering-to-General-Population">&#182;</a></h3><p>I've assessed and cleaned the demographics data, then scaled and transformed them. Now, it's time to see how the data clusters in the principal components space. In this substep, you will apply k-means clustering to the dataset and use the average within-cluster distances from each point to their assigned cluster's centroid to decide on a number of clusters to keep.</p>
 
 </div>
 </div>
@@ -15548,12 +15523,7 @@ The three most negatively correlated features are: <code>FINANZ_MINIMALIST</code
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Step-3.2:-Apply-All-Steps-to-the-Customer-Data">Step 3.2: Apply All Steps to the Customer Data<a class="anchor-link" href="#Step-3.2:-Apply-All-Steps-to-the-Customer-Data">&#182;</a></h3><p>Now that you have clusters and cluster centers for the general population, it's time to see how the customer data maps on to those clusters. Take care to not confuse this for re-fitting all of the models to the customer data. Instead, you're going to use the fits from the general population to clean, transform, and cluster the customer data. In the last step of the project, you will interpret how the general population fits apply to the customer data.</p>
-<ul>
-<li>Don't forget when loading in the customers data, that it is semicolon (<code>;</code>) delimited.</li>
-<li>Apply the same feature wrangling, selection, and engineering steps to the customer demographics using the <code>clean_data()</code> function you created earlier. (You can assume that the customer demographics data has similar meaning behind missing data patterns as the general demographics data.)</li>
-<li>Use the sklearn objects from the general demographics data, and apply their transformations to the customers data. That is, you should not be using a <code>.fit()</code> or <code>.fit_transform()</code> method to re-fit the old objects, nor should you be creating new sklearn objects! Carry the data through the feature scaling, PCA, and clustering steps, obtaining cluster assignments for all of the data in the customer demographics data.</li>
-</ul>
+<h3 id="Step-3.2:-Apply-All-Steps-to-the-Customer-Data">Step 3.2: Apply All Steps to the Customer Data<a class="anchor-link" href="#Step-3.2:-Apply-All-Steps-to-the-Customer-Data">&#182;</a></h3><p>Now that I have clusters and cluster centers for the general population, it's time to see how the customer data maps on to those clusters. Use the fits from the general population to clean, transform, and cluster the customer data. In the last step of the project, I interpret how the general population fits apply to the customer data.</p>
 
 </div>
 </div>
@@ -15689,17 +15659,8 @@ The three most negatively correlated features are: <code>FINANZ_MINIMALIST</code
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Step-3.3:-Compare-Customer-Data-to-Demographics-Data">Step 3.3: Compare Customer Data to Demographics Data<a class="anchor-link" href="#Step-3.3:-Compare-Customer-Data-to-Demographics-Data">&#182;</a></h3><p>At this point, you have clustered data based on demographics of the general population of Germany, and seen how the customer data for a mail-order sales company maps onto those demographic clusters. In this final substep, you will compare the two cluster distributions to see where the strongest customer base for the company is.</p>
+<h3 id="Step-3.3:-Compare-Customer-Data-to-Demographics-Data">Step 3.3: Compare Customer Data to Demographics Data<a class="anchor-link" href="#Step-3.3:-Compare-Customer-Data-to-Demographics-Data">&#182;</a></h3><p>At this point, I have clustered data based on demographics of the general population of Germany, and seen how the customer data for a mail-order sales company maps onto those demographic clusters. In this final substep, I compare the two cluster distributions to see where the strongest customer base for the company is.</p>
 <p>Consider the proportion of persons in each cluster for the general population, and the proportions for the customers. If we think the company's customer base to be universal, then the cluster assignment proportions should be fairly similar between the two. If there are only particular segments of the population that are interested in the company's products, then we should see a mismatch from one to the other. If there is a higher proportion of persons in a cluster for the customer data compared to the general population (e.g. 5% of persons are assigned to a cluster for the general population, but 15% of the customer data is closest to that cluster's centroid) then that suggests the people in that cluster to be a target audience for the company. On the other hand, the proportion of the data in a cluster being larger in the general population than the customer data (e.g. only 2% of customers closest to a population centroid that captures 6% of the data) suggests that group of persons to be outside of the target demographics.</p>
-<p>Take a look at the following points in this step:</p>
-<ul>
-<li>Compute the proportion of data points in each cluster for the general population and the customer data. Visualizations will be useful here: both for the individual dataset proportions, but also to visualize the ratios in cluster representation between groups. Seaborn's <a href="https://seaborn.pydata.org/generated/seaborn.countplot.html"><code>countplot()</code></a> or <a href="https://seaborn.pydata.org/generated/seaborn.barplot.html"><code>barplot()</code></a> function could be handy.<ul>
-<li>Recall the analysis you performed in step 1.1.3 of the project, where you separated out certain data points from the dataset if they had more than a specified threshold of missing values. If you found that this group was qualitatively different from the main bulk of the data, you should treat this as an additional data cluster in this analysis. Make sure that you account for the number of data points in this subset, for both the general population and customer datasets, when making your computations!</li>
-</ul>
-</li>
-<li>Which cluster or clusters are overrepresented in the customer dataset compared to the general population? Select at least one such cluster and infer what kind of people might be represented by that cluster. Use the principal component interpretations from step 2.3 or look at additional components to help you make this inference. Alternatively, you can use the <code>.inverse_transform()</code> method of the PCA and StandardScaler objects to transform centroids back to the original data space and interpret the retrieved values directly.</li>
-<li>Perform a similar investigation for the underrepresented clusters. Which cluster or clusters are underrepresented in the customer dataset compared to the general population, and what kinds of people are typified by these clusters?</li>
-</ul>
 
 </div>
 </div>
@@ -16357,16 +16318,6 @@ PCA sorted
 
 <span class="n">PCA_plot</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">centroids</span><span class="p">)</span>
 </pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p>Congratulations on making it this far in the project! Before you finish, make sure to check through the entire notebook from top to bottom to make sure that your analysis follows a logical flow and all of your findings are documented in <strong>Discussion</strong> cells. Once you've checked over all of your work, you should export the notebook as an HTML document to submit for evaluation. You can do this from the menu, navigating to <strong>File -&gt; Download as -&gt; HTML (.html)</strong>. You will submit both that document and this notebook for your project submission.</p>
-</blockquote>
 
 </div>
 </div>
