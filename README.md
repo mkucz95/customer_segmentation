@@ -1,4 +1,5 @@
 # Identifying Customer Segments
+## [Click Here for Whole Project]()
 #### Udacity Data Science - Project 3
 
 In this project, I work with real-life data provided to by Bertelsmann partners AZ Direct and Arvato Finance Solution. The data here concerns a company that performs mail-order sales in Germany. Their main question of interest is to identify facets of the population that are most likely to be purchasers of their products for a mailout campaign. I use unsupervised learning techniques to organize the general population into clusters, then use those clusters to see which of them comprise the main user base for the company. Prior to applying the machine learning methods, I assess and clean the data in order to convert the data into a usable form.
@@ -26,7 +27,7 @@ they have similar meaning and if it is hard to get data on one then it is hard t
 
 certain people didn't feel comfortable disclosing certain information and these people are likely to be more withdrawn in answering among various features.
 
-![Missing Values in Features]()
+![Missing Values in Features](https://github.com/mkucz95/customer_segmentation/blob/master/nan_cols.png)
 
 
 ### 1.2 Assess Missing Data in Each Row
@@ -39,11 +40,9 @@ The highest difference in distributions was seen in the columns:
 - `FINANZ_VORSORGER`
 This means that 3 out of the 6 features I looked at have a very different distribution of values between the two splits of data- NaN heavy data and NaN light data. This means that it might not be the best idea to drop a lot of the NaN datum, as it could disort the data. We should revist the high NaN rows later as some seem to be qualitatively different.
 
-![Missing Values in Rows]()
+![Missing Values in Rows](https://github.com/mkucz95/customer_segmentation/blob/master/nan_rows.png)
 
-![Distribution of Values Between High NaN and Low NaN Rows]()
-
-![Distribution of Values Between Features]()
+![Distribution of Values Between Features](https://github.com/mkucz95/customer_segmentation/blob/master/nan_dist.png)
 
 ### 1.3 Re-Encode Categorical Features
 - The non-numerical binary variable is: `OST_WEST_KZ`
@@ -109,7 +108,7 @@ The Principal Component Analysis with all of the Principal Components showed tha
 
 It is interesting to note that the last 50 components (#125-175) explain very little of the variance.
 
-![PCA Variance Explanation]()
+![PCA Variance Explanation](https://github.com/mkucz95/customer_segmentation/blob/master/pca_var.png)
 
 ### 2.3: Interpret Principal Components
 Each principal component is a unit vector that points in the direction of highest variance (after accounting for the variance captured by earlier principal components). The further a weight is from zero, the more the principal component is in the direction of the corresponding feature. If two features have large weights of the same sign (both positive or both negative), then increases in one tend expect to be associated with increases in the other. To contrast, features with different signs can be expected to show a negative correlation: increases in one variable should result in a decrease in the other.
