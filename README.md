@@ -1,5 +1,5 @@
 # Identifying Customer Segments
-## [Click Here for Whole Project]()
+## [Click Here for Whole Project](http://htmlpreview.github.io/?https://raw.githubusercontent.com/mkucz95/customer_segmentation/master/Identify_Customer_Segments.html)
 #### Udacity Data Science - Project 3
 
 In this project, I work with real-life data provided to by Bertelsmann partners AZ Direct and Arvato Finance Solution. The data here concerns a company that performs mail-order sales in Germany. Their main question of interest is to identify facets of the population that are most likely to be purchasers of their products for a mailout campaign. I use unsupervised learning techniques to organize the general population into clusters, then use those clusters to see which of them comprise the main user base for the company. Prior to applying the machine learning methods, I assess and clean the data in order to convert the data into a usable form.
@@ -129,33 +129,37 @@ What is interesting is that as we move through the principal components, at leas
 When investigating clustering and drawing scree-plot, I did not find a specific kink in the graph, but rather the average distance kept decreasing. The largest decrease happened in the first 5 clusters, before the benefit of adding an extra cluster starts levelling out. This is why I chose to segment the population into 10 clusters, a nice round number where the average distance is starting to level out on the scree plot.
 
 ### 3.3: Compare Customer Data to Demographics Data
-When including the population count for all including those we dropped for analysis as they had missing data, the culsters: 1,3,10 were the most over represented in the customer data compared to the general population data (2.48%, 0.2%, 1.43%. This was at a higher percentage for low-NaN data: 6.32%, 2.9% and 3.09% respectively). Based on the full general population data, it seems that cluster 3 is represented similarly in both general population and customer data, so we can exclude it from the 'over-represented' category. Other than clusters 7, and 8 were also very closely represented.
 
-The must under-represented compared to full population data were clusters: 4, 5, by a substantial 4.72% and 6.17% respectively.
+(Double-click this cell and replace this text with your own text, reporting findings and conclusions from the clustering analysis. Can we describe segments of the population that are relatively popular with the mail-order company, or relatively unpopular with the company?)
 
-***Over-Represented Cluster: #5***
-Based on the cluster centers, the highest value principal components are `PC8`, `PC7`, and `PC5` whereas the lowest value principal component are `PC2`, `PC1`, and `PC6`
+When including the population count for all including those we dropped for analysis as they had missing data, the culsters: `8`,`2`,`4` were the most over represented in the customer data compared to the general population data (`16.42%`, `4.06%%`, `3.51%`. These percentages were higher for low-NaN data. Based on the full general population data, it seems that clusters `4`, `5`, `6`, `9`, `10` were closely represented in both general population and customer data (difference of < 4%).
 
-*Most Value*
-- `PC8` is correlated the most with families with children, especially teenagers, as well as aspiring average to low-income earners.
-- `PC7` is correlated most with independent workers and title-holder households, as well as residing in a mixed use building
-- `PC5`: correlated with number of adults in household, family living in two-generational household, as well as an inverse correlation with region purchasing power (more expensive regions)
+The must under-represented compared to full population data were clusters: `3`, `1`, and `7` by a substantial `10.84%`, `7.57%`, and `6.74%` respectively.
 
-*Least Value*
-- `PC2`: is correlated with age, low financial preparedness.
-- `PC1`: correlated with low income, and a region with higher share of 6-10 family homes
-- `PC6`: average earning villagers who live in multi generational households, and is correlated with lack of home-ownership.
-This means that generally speaking aspiring independent families with children, who live in mixed-use mulit-generational housing and in areas where purchasing power is low are over represented in the customer cluster data compared to the general population. These are the people that are most important to the business of the company
+To see which features define each cluster the most, I took the inverse transformation of the PCA, which gives us back the original features but on a standard scale. This is much easier to interpret than the principal components themselves.
 
-***Under-Represented Cluster: #10***
-Based on the cluster centers, the highest value principal components are: `PC7`, `PC6` , `PC13`, and the lowest value principal components are: `PC1`, `PC11`, and `PC19`
+#### Over-Represented Cluster: #8
+* `LP_STATUS_FEIN_10.0` is the highest impact feature in the 8th cluster. It represents the highest income housholds and highest social status.
+    * `'LP_STATUS_GROB_5.0` represents the same aspect but on a less refined scale
+* `GREEN_AVANTGARDE` is the feature with the third highest impact in the 8th cluster. It represents participation and interest in environmental issues during a person's youth.
+* the least impactful feature in the 8th cluster is `HH_EINKOMMEN_SCORE`, which corroberates our first point as it is correlated with low income, but high income and status is the biggest definer of our cluster.
 
-*Most Value*
-- `PC6` is correlated with average earning villagers who live in multi generational households, and is correlated with lack of home-ownership.
-- `PC13` is correlated with working-class, multi-cultural youth.
+Therefore, people with a high income and high social status who are also environmentally conscious are significantly over represented in the customer data in comparison to the general population. This is a good target audience for any marketing campaing.
 
-*Least Value*
-- `PC11` is most correlated with single-parents, high share of 10+ family houses, and an established middle class
-- `PC19` is most correlated with older upper class people.
-This means that the most under represented cluster in our analysis contains people who are younger and don't own homes, as well as being more working class and multi-cultured.
+----
 
+#### Over-Represented Cluster: #2
+Two of the features cluster two is characterized by are:
+* `LP_STATUS_GROB_2.0`: average income and social status
+* `LP_STATUS_FEIN_4.0`: villagers
+
+While average earning villagers are over-represented in the customer data, they are more closely represented than the people in cluster #8 above. Nevertheless, it could still probably be worth to target these people in a campaign
+
+----
+
+#### Under-Represented Cluster: #3
+* `LP_STATUS_FEIN_2.0` is the biggest factor in the third cluster, and that represents orientation-seeking low-income earners. 
+* `FINANZTYP_1` is the second most important factor, and it represents people who are not interested in finance.
+* `SEMIO_RAT` is a variable that portrays rationality (higher values means less rational).
+
+This means that low income people who are both irrational and do not care for finance much are under-represented in the customer population (which makes sense since this is a financial services company)
