@@ -1,7 +1,11 @@
 # Identifying Customer Segments
-## [Click Here for Whole Project](http://htmlpreview.github.io/?https://raw.githubusercontent.com/mkucz95/customer_segmentation/master/Identify_Customer_Segments.html)
-#### Udacity Data Science - Project 3
 
+## Installations
+- Python: v.3.6.3
+- Bertelsmann Data is Private and not avaliable for distribution
+- Libraries: Sci-Kit Learn, Pandas, Numpy
+
+## Project Motivation
 In this project, I work with real-life data provided to by Bertelsmann partners AZ Direct and Arvato Finance Solution. The data here concerns a company that performs mail-order sales in Germany. Their main question of interest is to identify facets of the population that are most likely to be purchasers of their products for a mailout campaign. I use unsupervised learning techniques to organize the general population into clusters, then use those clusters to see which of them comprise the main user base for the company. Prior to applying the machine learning methods, I assess and clean the data in order to convert the data into a usable form.
 
 
@@ -9,8 +13,13 @@ The unsupervised learning branch of machine learning is key in the organization 
 
 In addition, the dataset presented in this project requires a number of assessment and cleaning steps before you can apply your machine learning methods.
 
+## File Descriptions
+- Data_Dictionary.md: meanings of variables
+- [Identify_Customer_Segments.html](http://htmlpreview.github.io/?https://raw.githubusercontent.com/mkucz95/customer_segmentation/master/Identify_Customer_Segments.html): html version of python notebook
+- Identify_Customer_Segments.ipynb: actual work done
 
-## Write-Up For Project
+## Project Work: 
+[Click Here for to View](http://htmlpreview.github.io/?https://raw.githubusercontent.com/mkucz95/customer_segmentation/master/Identify_Customer_Segments.html)
 
 ### 1.1 Assessing Missing Data in Each Column
 There were some columns with significant amounts of missing data. Out of the total of 891,221 observations, 6 of the features had more than 200,000 missing values. I decided that these were the outliers since close to 25% of the data was missing. Most of these were supposed to hold information on a personal or household level. Possibly people were uncomfortable disclosing this kind of information. The columns excluded from the dataset are shown above.
@@ -163,3 +172,7 @@ While average earning villagers are over-represented in the customer data, they 
 * `SEMIO_RAT` is a variable that portrays rationality (higher values means less rational).
 
 This means that low income people who are both irrational and do not care for finance much are under-represented in the customer population (which makes sense since this is a financial services company)
+
+
+## Licensing, Authors, Acknowledgements, etc.
+ Data provided by Bertelsmann SE & Co. KGaA, organized by Udacity.
