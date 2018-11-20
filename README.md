@@ -16,10 +16,7 @@ In addition, the dataset presented in this project requires a number of assessme
 ## File Descriptions
 - Data_Dictionary.md: meanings of variables
 - [Identify_Customer_Segments.html](http://htmlpreview.github.io/?https://raw.githubusercontent.com/mkucz95/customer_segmentation/master/Identify_Customer_Segments.html): html version of python notebook
-- Identify_Customer_Segments.ipynb: actual work done
-
-## Project Work: 
-[Click Here to View](http://htmlpreview.github.io/?https://raw.githubusercontent.com/mkucz95/customer_segmentation/master/Identify_Customer_Segments.html)
+- [Identify_Customer_Segments.ipynb](https://github.com/mkucz95/customer_segmentation/blob/master/Identify_Customer_Segments.ipynb): python notebook with work done
 
 ### 1.1 Assessing Missing Data in Each Column
 There were some columns with significant amounts of missing data. Out of the total of 891,221 observations, 6 of the features had more than 200,000 missing values. I decided that these were the outliers since close to 25% of the data was missing. Most of these were supposed to hold information on a personal or household level. Possibly people were uncomfortable disclosing this kind of information. The columns excluded from the dataset are shown above.
